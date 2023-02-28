@@ -25,10 +25,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install ToPages
+      - name: Install Noll
         run: |
-            git clone https://github.com/ThreeTenth/GitHub-Discussions-to-Blog
-            cd GitHub-Discussions-to-Blog
+            git clone https://github.com/NollGo/Noll
+            cd Noll
             go get -v -u -d ./...
             if [ -f Gopkg.toml ]; then
                 curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
@@ -36,32 +36,22 @@ jobs:
             fi
             ls -a -lh
             echo "GO GET SUCCESSED"
-            cat go.mod            
+            cat go.mod
             cat go.sum
-            echo "NEXT"
-      - name: Setup GO
-        uses: actions/setup-go@v3
-        with:
-          go-version: '>=1.20.0'
-          cache: true
-          cache-dependency-path: GitHub-Discussions-to-Blog/go.sum
-      - name: Build site
-        run: |
-            cd GitHub-Discussions-to-Blog
-            ls -a -lh
             go build --ldflags="-w -s"
             ls -a -lh
-            cd ..
-            chmod 775 ./GitHub-Discussions-to-Blog/io.github.topages
-            path="abc/def"
+            chmod 775 ./io.github.nollgo
+            echo "NEXT"
+      - name: Build site
+        run: |
             repository=${{ github.repository }}
             repositoryName=$(basename "$repository")
             pagesPath="./"
             baseURL="/$repositoryName"
             gamID="${{ vars.GAMID }}"
             echo "${{ github.repository_owner }}, $repositoryName, ${{secrets.GITHUB_TOKEN}}, $pagesPath, $baseURL, $gamID,"
-            ./GitHub-Discussions-to-Blog/io.github.topages -owner ${{ github.repository_owner }} -name $repositoryName  -token ${{secrets.GITHUB_TOKEN}} -pages $pagesPath -baseURL $baseURL -gamID $gamID
-            rm -rf ./GitHub-Discussions-to-Blog
+            ./Noll/io.github.nollgo -owner ${{ github.repository_owner }} -name $repositoryName  -token ${{secrets.GITHUB_TOKEN}} -pages "$pagesPath" -baseURL "$baseURL" -gamID "$gamID"
+            rm -rf ./Noll
             ls -a -lh
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
