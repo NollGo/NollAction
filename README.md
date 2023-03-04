@@ -12,14 +12,6 @@ By GitHub Actions, Package a Noll site.
 
 这个仓库可以命名为：`noll.github.io`（`noll` 替换为你的 `github` 用户名），也可以是其他名字，比如 `blog` 等。如果你的仓库名是前者，那么你的网站最终地址是 `https://noll.github.io`，如果是后者，那么你的网站地址是 `https://noll.github.io/blog`。
 
-## 开启 GitHub Pages 并设置 `Source` 为 `Github Actions`
-
-> 如果会，可以跳过此步骤。
-
-在 Repository 的设置页的左边栏里，点击`Pages` 菜单，进入 `GitHub Pages` 页面。然后设置 `Build and deployment` 的 `Source` 为 `Github Actions`（`workflow` 里面用到了发布到 `GitHub Pages` 的框架和自定义构建过程）。
-
-![image](https://user-images.githubusercontent.com/11867809/220971700-5bc6946e-970b-46d3-a53a-1b1e754fdfc2.png)
-
 ## 开启 GitHub Discussions
 
 > 如果会，可以跳过此步骤。
@@ -30,7 +22,31 @@ Noll 采用 GitHub Discussions 作为发布和保存文章的数据源，所以�
 
 ![image](https://user-images.githubusercontent.com/11867809/220903391-80a0d084-6c88-425f-8ff8-e61c95532dc6.png)
 
+## 开启 GitHub Pages 并设置 `Source` 为 `Github Actions`
+
+> 如果会，可以跳过此步骤。
+
+在 Repository 的设置页的左边栏里，点击`Pages` 菜单，进入 `GitHub Pages` 页面。然后设置 `Build and deployment` 的 `Source` 为 `Github Actions`（`workflow` 里面用到了发布到 `GitHub Pages` 的框架和自定义构建过程）。
+
+![image](https://user-images.githubusercontent.com/11867809/222884834-7709f999-b0e5-4bcb-bd7a-712f023025e5.png)
+
+## 启用 Workflow
+
+**通过 Fork NollAction 创建的仓库的必要步骤，通过手动创建仓库的用户可跳过此步骤。**
+
+> 如果会，可以跳过此步骤
+
+GitHub 对于 Forked 仓库的 `Workflow` 默认不启用，提示如下：
+
+由于此存储库在分叉时包含工作流文件，因此我们已禁止它们在此分叉上运行。在此存储库上启用操作之前，请确保您了解已配置的工作流及其预期用途。
+
+所以需要你启用我们的 `Workflow`。
+
+![image](https://user-images.githubusercontent.com/11867809/222884562-6d59bc4c-bd3f-4502-8938-057805c68a18.png)
+
 ## 创建文章
+
+接下来就可以创建文章了。
 
 创建文章就是创建一个讨论（`Discussion`）的过程，比如我们要创建一个 `Hello world` 的文章。
 
